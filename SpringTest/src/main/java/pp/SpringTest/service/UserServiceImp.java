@@ -8,7 +8,7 @@ import pp.SpringTest.model.User;
 
 
 import java.util.List;
-
+@Transactional
 @Service
 public class UserServiceImp implements UserService {
 
@@ -19,13 +19,11 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public void saveUser(User user) {
         userDao.saveUser(user);
     }
 
     @Override
-    @Transactional
     public void updateUser(Long id, String firstName, String lastName, String email) {
         User existingUser = userDao.findUserById(id);
         if (existingUser != null) {
@@ -37,7 +35,6 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public void updateUserFromEdit(Long id, String firstName, String lastName, String email) {
         User existingUser = userDao.findUserById(id);
         if (existingUser == null) {
@@ -52,19 +49,16 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
-    @Transactional
     public void deleteUser(Long id) {
         userDao.deleteUser(id);
     }
 
     @Override
-    @Transactional
     public List<User> findAllUsers() {
         return userDao.findAllUsers();
     }
 
     @Override
-    @Transactional
     public User findUserById(Long id) {
         return userDao.findUserById(id);
     }
